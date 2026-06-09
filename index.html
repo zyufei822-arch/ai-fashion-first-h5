@@ -1,0 +1,1279 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI FASHION FIRST | 参会登记</title>
+    <meta name="description" content="AI FASHION FIRST — 长三角AI时尚科创峰会参会登记。2026年6月29日，杭州市 · 和盛大厦。" />
+    <meta property="og:site_name" content="AI FASHION FIRST" />
+    <meta property="og:title" content="AI FASHION FIRST | 长三角AI时尚科创峰会参会登记" />
+    <meta property="og:description" content="从认知到行动。请填写参会信息，用于参会确认、现场签到与活动联系。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://zyufei822-arch.github.io/ai-fashion-first-h5/" />
+    <meta property="og:image" content="https://zyufei822-arch.github.io/ai-fashion-first-h5/share-card.png" />
+    <meta property="og:image:width" content="600" />
+    <meta property="og:image:height" content="600" />
+    <meta name="twitter:card" content="summary" />
+    <meta itemprop="name" content="AI FASHION FIRST | 长三角AI时尚科创峰会参会登记" />
+    <meta itemprop="description" content="从认知到行动。请填写参会信息，用于参会确认、现场签到与活动联系。" />
+    <meta itemprop="image" content="https://zyufei822-arch.github.io/ai-fashion-first-h5/share-card.png" />
+    <link rel="image_src" href="https://zyufei822-arch.github.io/ai-fashion-first-h5/share-card.png" />
+    <style>
+      :root {
+        --ink: #111318;
+        --muted: #68707c;
+        --line: rgba(18, 24, 34, 0.12);
+        --blue: #1f68ff;
+        --cyan: #5bc5ff;
+        --silver: #f3f5f8;
+        --panel: rgba(255, 255, 255, 0.88);
+        --future-bg:
+          linear-gradient(124deg, rgba(255, 255, 255, 0.96) 0%, rgba(235, 247, 255, 0.94) 38%, rgba(247, 249, 255, 0.98) 72%, #ffffff 100%),
+          linear-gradient(28deg, rgba(31, 104, 255, 0.11), transparent 42%),
+          linear-gradient(154deg, transparent 0%, rgba(91, 197, 255, 0.16) 48%, transparent 82%);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      .share-thumb {
+        position: absolute;
+        left: -9999px;
+        top: 0;
+        width: 300px;
+        height: 300px;
+        opacity: 0.01;
+        pointer-events: none;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+        font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 22% 18%, rgba(91, 197, 255, 0.16), transparent 28%),
+          linear-gradient(132deg, #f7f8fb 0%, #ebeef4 44%, #fdfdfd 100%);
+      }
+
+      body {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 28px;
+      }
+
+      .stage {
+        width: min(1120px, 100%);
+        min-height: calc(100vh - 56px);
+        display: grid;
+        grid-template-columns: minmax(280px, 1fr) auto;
+        gap: 42px;
+        align-items: center;
+      }
+
+      .brief {
+        max-width: 480px;
+        padding-left: 8px;
+      }
+
+      .eyebrow {
+        color: var(--blue);
+        font-size: 13px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+
+      .brief h1 {
+        margin: 18px 0 16px;
+        font-size: clamp(34px, 5vw, 64px);
+        line-height: 0.95;
+        letter-spacing: 0;
+      }
+
+      .brief p {
+        margin: 0;
+        color: #4d5663;
+        font-size: 17px;
+        line-height: 1.9;
+      }
+
+      .meta {
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .meta-item {
+        min-height: 82px;
+        padding: 16px;
+        border: 1px solid rgba(17, 19, 24, 0.1);
+        background: rgba(255, 255, 255, 0.58);
+        backdrop-filter: blur(14px);
+        border-radius: 8px;
+      }
+
+      .meta-item span {
+        display: block;
+        color: var(--muted);
+        font-size: 12px;
+        margin-bottom: 8px;
+      }
+
+      .meta-item strong {
+        display: block;
+        font-size: 15px;
+        line-height: 1.45;
+        font-weight: 650;
+      }
+
+      .phone-shell {
+        width: 430px;
+        height: 884px;
+        border-radius: 54px;
+        padding: 14px;
+        background:
+          linear-gradient(145deg, #171a20, #0e1015),
+          #111318;
+        box-shadow:
+          0 32px 80px rgba(18, 24, 34, 0.25),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+        position: relative;
+      }
+
+      .phone-shell::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 22px;
+        transform: translateX(-50%);
+        width: 118px;
+        height: 30px;
+        border-radius: 999px;
+        background: #050609;
+        z-index: 8;
+      }
+
+      .phone-screen {
+        width: 100%;
+        height: 100%;
+        border-radius: 42px;
+        overflow: hidden;
+        background: #fbfcfe;
+        position: relative;
+      }
+
+      .h5 {
+        height: 100%;
+        overflow-y: auto;
+        scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+      }
+
+      .h5::-webkit-scrollbar {
+        display: none;
+      }
+
+      .screen {
+        width: 100%;
+        min-height: 100%;
+        scroll-snap-align: start;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .poster {
+        color: var(--ink);
+        background: var(--future-bg);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 122px 24px 30px;
+      }
+
+      .poster canvas {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.55;
+      }
+
+      .poster::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(116deg, transparent 0 24%, rgba(255, 255, 255, 0.56) 38%, rgba(91, 197, 255, 0.1) 47%, transparent 66%),
+          repeating-linear-gradient(108deg, rgba(31, 104, 255, 0.045) 0 1px, transparent 1px 28px),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.08) 48%, rgba(255, 255, 255, 0.72));
+      }
+
+      .poster-content,
+      .poster-bottom {
+        position: relative;
+        z-index: 2;
+      }
+
+      .poster-tag {
+        display: inline-flex;
+        width: fit-content;
+        border: 1px solid rgba(31, 104, 255, 0.22);
+        padding: 7px 10px;
+        border-radius: 999px;
+        color: #1d5ee8;
+        background: rgba(255, 255, 255, 0.62);
+        font-size: 11px;
+        letter-spacing: 0.16em;
+      }
+
+      .poster-title {
+        margin: 54px 0 0;
+      }
+
+      .poster-title h2 {
+        margin: 0;
+        font-size: 39px;
+        line-height: 0.94;
+        letter-spacing: 0;
+        font-weight: 760;
+      }
+
+      .poster-title .cn {
+        margin-top: 18px;
+        font-size: 19px;
+        line-height: 1.35;
+        font-weight: 650;
+      }
+
+      .theme {
+        margin-top: 20px;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        color: #2d3746;
+        font-size: 15px;
+      }
+
+      .theme::before {
+        content: "";
+        width: 44px;
+        height: 1px;
+        background: linear-gradient(90deg, var(--blue), rgba(31, 104, 255, 0.14));
+      }
+
+      .poster-info {
+        display: grid;
+        gap: 8px;
+        margin-bottom: 24px;
+        color: #4d5663;
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      .poster-position {
+        margin-top: 22px;
+        padding: 14px;
+        border: 1px solid rgba(18, 24, 34, 0.1);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.74);
+        backdrop-filter: blur(16px);
+        color: #4d5663;
+        font-size: 13px;
+        line-height: 1.68;
+      }
+
+      .poster-position strong {
+        display: block;
+        color: #1d5ee8;
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        margin-bottom: 7px;
+      }
+
+      .cta {
+        appearance: none;
+        width: 100%;
+        border: 0;
+        border-radius: 8px;
+        min-height: 52px;
+        background: linear-gradient(135deg, #10203e, #2566f2);
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 750;
+        box-shadow: 0 14px 28px rgba(31, 104, 255, 0.22);
+      }
+
+      .swipe {
+        text-align: center;
+        color: #6b7481;
+        font-size: 12px;
+        margin-bottom: 8px;
+        animation: float 1.8s ease-in-out infinite;
+      }
+
+      .swipe-arrow {
+        width: 28px;
+        height: 28px;
+        margin: 0 auto 2px;
+        color: #2566f2;
+        animation: arrowPulse 1.5s ease-in-out infinite;
+      }
+
+      .swipe-arrow svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-5px);
+        }
+      }
+
+      @keyframes arrowPulse {
+        0%,
+        100% {
+          opacity: 0.48;
+          transform: translateY(0);
+        }
+        50% {
+          opacity: 1;
+          transform: translateY(7px);
+        }
+      }
+
+      .story-screen,
+      .form-screen {
+        background: var(--future-bg);
+        padding: 46px 22px 28px;
+      }
+
+      .story-screen::before,
+      .form-screen::before,
+      .success::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background:
+          linear-gradient(112deg, transparent 0 20%, rgba(255, 255, 255, 0.68) 36%, rgba(91, 197, 255, 0.12) 44%, transparent 62%),
+          repeating-linear-gradient(104deg, rgba(31, 104, 255, 0.042) 0 1px, transparent 1px 32px),
+          repeating-linear-gradient(18deg, rgba(17, 19, 24, 0.028) 0 1px, transparent 1px 48px);
+        opacity: 0.78;
+      }
+
+      .story-screen > *,
+      .form-screen > *,
+      .success > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .form-screen {
+        display: flex;
+        flex-direction: column;
+        padding: 58px 22px 20px;
+      }
+
+      .form-header {
+        text-align: center;
+      }
+
+      .story-screen {
+        padding: 56px 22px 28px;
+      }
+
+      .story-screen > .mini-brand,
+      .story-screen > h2,
+      .story-screen > .lead {
+        text-align: center;
+      }
+
+      .mini-brand {
+        color: var(--blue);
+        font-size: 13px;
+        letter-spacing: 0.12em;
+        font-weight: 760;
+        margin-bottom: 6px;
+      }
+
+      .story-screen h2,
+      .form-screen h2,
+      .success h2,
+      .admin h2 {
+        margin: 0;
+        font-size: 34px;
+        line-height: 1.1;
+        letter-spacing: 0;
+      }
+
+      .lead {
+        margin: 12px 0 16px;
+        color: #566171;
+        font-size: 15px;
+        line-height: 1.62;
+      }
+
+      .form-screen .lead {
+        margin: 8px 0 14px;
+        font-size: 14px;
+        line-height: 1.58;
+      }
+
+      .info-panel,
+      .form-card,
+      .success-card,
+      .stat,
+      .record,
+      .search {
+        border: 1px solid var(--line);
+        background: var(--panel);
+        backdrop-filter: blur(18px);
+        border-radius: 8px;
+      }
+
+      .agenda-list {
+        position: relative;
+        display: grid;
+        gap: 0;
+        margin: 12px 0;
+        padding: 2px 0;
+      }
+
+      .agenda-list::before {
+        content: "";
+        position: absolute;
+        top: 18px;
+        bottom: 18px;
+        left: 112px;
+        width: 1px;
+        background: linear-gradient(180deg, rgba(37, 102, 242, 0.16), rgba(37, 102, 242, 0.72), rgba(37, 102, 242, 0.16));
+      }
+
+      .agenda-item {
+        position: relative;
+        display: grid;
+        grid-template-columns: 102px 1fr;
+        gap: 18px;
+        padding: 10px 0;
+      }
+
+      .agenda-item::before {
+        content: "";
+        position: absolute;
+        left: 105px;
+        top: 18px;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: #2566f2;
+        box-shadow: 0 0 0 6px rgba(37, 102, 242, 0.12);
+      }
+
+      .agenda-time {
+        align-self: start;
+        color: #1d5ee8;
+        font-size: 14px;
+        font-weight: 760;
+        line-height: 1.35;
+        white-space: nowrap;
+      }
+
+      .agenda-main {
+        min-width: 0;
+      }
+
+      .agenda-main strong {
+        display: block;
+        font-size: 15px;
+        line-height: 1.38;
+      }
+
+      .agenda-main span {
+        display: block;
+        color: #68707c;
+        font-size: 13px;
+        line-height: 1.48;
+        margin-top: 4px;
+      }
+
+      .org-list {
+        display: grid;
+        gap: 9px;
+        margin: 14px 0 16px;
+      }
+
+      .org-item {
+        display: grid;
+        grid-template-columns: 70px 1fr;
+        gap: 12px;
+        padding: 11px 0;
+        border-bottom: 1px solid rgba(18, 24, 34, 0.08);
+        font-size: 12px;
+        line-height: 1.55;
+      }
+
+      .org-item:last-child {
+        border-bottom: 0;
+      }
+
+      .org-item span {
+        color: var(--muted);
+      }
+
+      .org-item strong {
+        font-weight: 650;
+      }
+
+      .info-panel {
+        padding: 16px;
+        display: grid;
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+
+      .info-row {
+        display: grid;
+        grid-template-columns: 68px 1fr;
+        gap: 12px;
+        font-size: 13px;
+        line-height: 1.55;
+      }
+
+      .info-row span {
+        color: var(--muted);
+      }
+
+      .info-row strong {
+        font-weight: 650;
+      }
+
+      .form-card {
+        padding: 14px;
+        display: grid;
+        gap: 9px;
+      }
+
+      .form-screen .info-panel {
+        display: none;
+      }
+
+      label {
+        display: grid;
+        gap: 4px;
+        font-size: 13px;
+        color: #596373;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        min-height: 42px;
+        border: 1px solid rgba(17, 19, 24, 0.12);
+        border-radius: 8px;
+        background: #fff;
+        color: var(--ink);
+        font: inherit;
+        font-size: 15px;
+        padding: 0 12px;
+        outline: none;
+      }
+
+      textarea {
+        min-height: 54px;
+        padding-top: 10px;
+        resize: none;
+      }
+
+      .primary {
+        margin-top: 4px;
+        min-height: 52px;
+        border: 1px solid rgba(37, 102, 242, 0.32);
+        border-radius: 999px;
+        color: #1748b8;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(224, 238, 255, 0.42)),
+          rgba(255, 255, 255, 0.48);
+        backdrop-filter: blur(18px);
+        font-size: 17px;
+        font-weight: 760;
+        box-shadow:
+          0 14px 28px rgba(31, 104, 255, 0.14),
+          inset 0 1px 0 rgba(255, 255, 255, 0.82);
+      }
+
+      .privacy {
+        margin: 9px 2px 0;
+        color: #7a8390;
+        font-size: 11px;
+        line-height: 1.45;
+      }
+
+      .success {
+        position: absolute;
+        inset: 0;
+        z-index: 30;
+        min-height: auto;
+        padding: 72px 22px 30px;
+        display: none;
+        align-items: center;
+        justify-items: center;
+        background: var(--future-bg);
+      }
+
+      .success.is-visible {
+        display: grid;
+      }
+
+      .h5.is-locked {
+        overflow: hidden;
+      }
+
+      .success-card {
+        width: 100%;
+        padding: 42px 22px 34px;
+        text-align: center;
+        display: grid;
+        justify-items: center;
+        border: 1px solid rgba(18, 24, 34, 0.1);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.74);
+        backdrop-filter: blur(16px);
+      }
+
+      .success-card p {
+        color: #4d5663;
+        font-size: 13px;
+        line-height: 1.68;
+        margin: 18px 0 24px;
+        max-width: 296px;
+      }
+
+      .success-card .primary {
+        width: min(188px, 100%);
+        padding: 0 18px;
+      }
+
+      .admin {
+        padding: 48px 18px 24px;
+        background: #f7f8fb;
+      }
+
+      .admin-top {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .admin-top span {
+        color: var(--blue);
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .stats {
+        margin: 20px 0 12px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .stat {
+        padding: 13px;
+      }
+
+      .stat b {
+        display: block;
+        font-size: 24px;
+        line-height: 1;
+      }
+
+      .stat span {
+        display: block;
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 11px;
+      }
+
+      .search {
+        height: 44px;
+        display: flex;
+        align-items: center;
+        padding: 0 13px;
+        color: #7b8491;
+        font-size: 13px;
+        margin-bottom: 12px;
+      }
+
+      .records {
+        display: grid;
+        gap: 10px;
+      }
+
+      .record {
+        padding: 13px;
+      }
+
+      .record-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 8px;
+      }
+
+      .record-head strong {
+        font-size: 15px;
+      }
+
+      .record-head span,
+      .record p {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .record p {
+        margin: 0;
+        line-height: 1.7;
+      }
+
+      .dock {
+        position: absolute;
+        left: 28px;
+        right: 28px;
+        top: calc(100% + 14px);
+        z-index: 10;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 7px;
+        padding: 8px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.72);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.68);
+        box-shadow: 0 18px 40px rgba(18, 24, 34, 0.16);
+      }
+
+      .dock button {
+        border: 0;
+        height: 34px;
+        border-radius: 999px;
+        background: transparent;
+        color: #4e5866;
+        font-size: 12px;
+      }
+
+      .dock button.active {
+        color: #fff;
+        background: #10151f;
+      }
+
+      @media (max-width: 900px) {
+        body {
+          padding: 18px;
+        }
+
+        .stage {
+          min-height: auto;
+          grid-template-columns: 1fr;
+          gap: 22px;
+        }
+
+        .brief {
+          max-width: none;
+          padding: 0;
+        }
+
+        .brief h1 {
+          font-size: 34px;
+        }
+
+        .brief p {
+          font-size: 15px;
+        }
+
+        .meta {
+          display: none;
+        }
+
+        .phone-shell {
+          width: min(430px, 100%);
+          height: min(884px, calc(100vh - 24px));
+          margin: 0 auto;
+        }
+      }
+
+      body {
+        display: block;
+        padding: 0;
+        background: #fbfcfe;
+      }
+
+      .stage {
+        display: block;
+        width: 100%;
+        min-height: 100vh;
+      }
+
+      .brief,
+      .dock,
+      #admin {
+        display: none;
+      }
+
+      .phone-shell {
+        width: 100%;
+        height: 100vh;
+        padding: 0;
+        border-radius: 0;
+        background: #fbfcfe;
+        box-shadow: none;
+      }
+
+      .phone-shell::before {
+        display: none;
+      }
+
+      .phone-screen {
+        border-radius: 0;
+      }
+
+      .poster {
+        padding-top: 72px;
+      }
+
+      .story-screen {
+        padding-top: 42px;
+      }
+
+      .form-screen {
+        padding-top: 38px;
+      }
+    </style>
+  </head>
+  <body>
+    <img class="share-thumb" src="./share-card.png" alt="AI FASHION FIRST 长三角AI时尚科创峰会参会登记" />
+    <main class="stage">
+      <section class="brief" aria-label="Preview brief">
+        <div class="eyebrow">Mobile H5 Preview</div>
+        <h1>AI FASHION FIRST</h1>
+        <p>
+          长三角AI时尚科创峰会报名 H5 预览。扫码首屏先建立活动定位，
+          再用线路图展示 6月29日主论坛日程，最后进入参会登记。
+        </p>
+        <div class="meta">
+          <div class="meta-item">
+            <span>活动时间</span>
+            <strong>2026.06.29 - 07.01</strong>
+          </div>
+          <div class="meta-item">
+            <span>活动地点</span>
+            <strong>杭州市 · 和盛大厦</strong>
+          </div>
+          <div class="meta-item">
+            <span>活动主题</span>
+            <strong>从认知到行动</strong>
+          </div>
+          <div class="meta-item">
+            <span>页面流程</span>
+            <strong>海报 / 日程 / 登记 / 成功 / 后台</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="phone-shell" aria-label="Phone preview">
+        <div class="phone-screen">
+          <div class="h5" id="h5">
+            <section class="screen poster" id="poster">
+              <canvas id="posterCanvas" aria-hidden="true"></canvas>
+              <div class="poster-content">
+                <div class="poster-tag">FASHION × AI SUMMIT</div>
+                <div class="poster-title">
+                  <h2>AI<br />FASHION<br />FIRST</h2>
+                  <div class="cn">长三角AI时尚科创峰会</div>
+                </div>
+                <div class="theme">从认知到行动</div>
+                <div class="poster-position">
+                  一场面向服装与消费品牌决策层的AI时尚产业峰会，用主论坛建立行业判断和信任，用 AI Champion营把企业内部AI推进者带入真实工作场景落地。
+                </div>
+              </div>
+              <div class="poster-bottom">
+                <div class="poster-info">
+                  <div>时间：2026年6月29日（周一）— 7月1日（周三）</div>
+                  <div>地点：杭州市 · 和盛大厦</div>
+                </div>
+                <div class="swipe">上划查看活动日程</div>
+                <div class="swipe-arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </div>
+              </div>
+            </section>
+
+            <section class="screen story-screen" id="story">
+              <div class="mini-brand">MAIN FORUM AGENDA</div>
+              <h2>活动日程安排</h2>
+              <p class="lead">
+                时间：2026年6月29日（周一）09:00–16:00<br />
+                地点：杭州市 · 和盛大厦 3号楼 8楼汇报厅
+              </p>
+
+              <div class="agenda-list">
+                <div class="agenda-item">
+                  <div class="agenda-time">08:30–09:00</div>
+                  <div class="agenda-main"><strong>签到入场 / 现场体验</strong></div>
+                </div>
+                <div class="agenda-item">
+                  <div class="agenda-time">09:00–09:35</div>
+                  <div class="agenda-main">
+                    <strong>开场与致辞</strong>
+                    <span>主持人开场、主办方致辞、中服协领导致辞、钱塘智慧城管委会领导致辞</span>
+                  </div>
+                </div>
+                <div class="agenda-item">
+                  <div class="agenda-time">09:35–10:20</div>
+                  <div class="agenda-main">
+                    <strong>活动整体介绍 / 基地授牌签约</strong>
+                    <span>上海时尚之都促进中心 AI 时尚科创专委会、和盛大厦代表</span>
+                  </div>
+                </div>
+                <div class="agenda-item">
+                  <div class="agenda-time">10:20–10:50</div>
+                  <div class="agenda-main">
+                    <strong>重磅发布：面向时尚产业的终端 AI 智能设备首发</strong>
+                    <span>智谱灵玑 × 波粒二象</span>
+                  </div>
+                </div>
+                <div class="agenda-item">
+                  <div class="agenda-time">10:50–11:30</div>
+                  <div class="agenda-main">
+                    <strong>企业 AI 落地实战 / 产业生态重构</strong>
+                    <span>陈然、隗兵等嘉宾分享</span>
+                  </div>
+                </div>
+                <div class="agenda-item">
+                  <div class="agenda-time">11:30–13:30</div>
+                  <div class="agenda-main"><strong>午餐 / 自由交流 / 设备体验</strong></div>
+                </div>
+                <div class="agenda-item">
+                  <div class="agenda-time">13:30–14:30</div>
+                  <div class="agenda-main">
+                    <strong>圆桌论坛：AI 浪潮下时尚产业的变局与机遇</strong>
+                    <span>裘小惠 × 施渝一等嘉宾</span>
+                  </div>
+                </div>
+                <div class="agenda-item">
+                  <div class="agenda-time">14:30–15:50</div>
+                  <div class="agenda-main">
+                    <strong>实战案例 / 技术前沿的产业化实践</strong>
+                    <span>时尚品牌 AI 落地转型、从运筹优化到时尚 AI</span>
+                  </div>
+                </div>
+                <div class="agenda-item">
+                  <div class="agenda-time">15:50–16:00</div>
+                  <div class="agenda-main"><strong>峰会共识与行动倡议</strong></div>
+                </div>
+                <div class="agenda-item">
+                  <div class="agenda-time">16:00 起</div>
+                  <div class="agenda-main"><strong>自由交流</strong></div>
+                </div>
+              </div>
+
+            </section>
+
+            <section class="screen form-screen" id="form">
+              <div class="form-header">
+                <div class="mini-brand">AI FASHION FIRST</div>
+                <h2>参会登记</h2>
+                <p class="lead">
+                  欢迎参加 AI FASHION FIRST — 长三角AI时尚科创峰会。请填写以下信息，主办方将用于参会确认、现场签到与活动联系。
+                </p>
+              </div>
+
+              <div class="info-panel">
+                <div class="info-row">
+                  <span>活动时间</span>
+                  <strong>2026年6月29日（周一）— 7月1日（周三）</strong>
+                </div>
+                <div class="info-row">
+                  <span>活动地点</span>
+                  <strong>杭州市 · 和盛大厦</strong>
+                </div>
+                <div class="info-row">
+                  <span>补充说明</span>
+                  <strong>6月30日–7月1日另设 AI Champion营深度训练营。</strong>
+                </div>
+              </div>
+
+              <form class="form-card" id="registrationForm">
+                <label>姓名 *<input name="name" required autocomplete="name" placeholder="请填写姓名" /></label>
+                <label>公司 *<input name="company" required autocomplete="organization" placeholder="请填写公司名称" /></label>
+                <label>
+                  职务
+                  <select name="title">
+                    <option value="" selected>请选择职务（选填）</option>
+                    <option>创始人 / 企业负责人</option>
+                    <option>设计师 / 创意负责人</option>
+                    <option>市场部 / 品牌公关</option>
+                    <option>数字化 / AI负责人</option>
+                    <option>运营 / 供应链负责人</option>
+                  </select>
+                </label>
+                <label>联系方式 *<input name="phone" required inputmode="tel" autocomplete="tel" placeholder="请填写手机号或微信" /></label>
+                <label>
+                  参会安排 *
+                  <select name="attendance" required>
+                    <option value="" selected disabled>请选择参会安排</option>
+                    <option>6月29日主论坛</option>
+                    <option>AI Champion营深度训练营</option>
+                    <option>主论坛 + Champion营均有意向</option>
+                  </select>
+                </label>
+                <label>备注<textarea name="remark" placeholder="可填写特殊需求或补充信息"></textarea></label>
+                <button class="primary" type="submit">确认登记</button>
+              </form>
+              <p class="privacy">您提交的信息仅用于本次活动的参会确认、现场签到与活动联系。</p>
+            </section>
+
+            <section class="screen success" id="success">
+              <div class="success-card">
+                <h2>登记成功</h2>
+                <p>
+                  感谢您关注 AI FASHION FIRST — 长三角AI时尚科创峰会。期待您的到来，与我们在杭州共同开启一场从认知到行动的 AI 时尚产业对话。
+                </p>
+                <button class="primary" type="button" data-target="poster">返回首页</button>
+              </div>
+            </section>
+
+          </div>
+
+          <nav class="dock" aria-label="Preview navigation">
+            <button class="active" data-target="poster">海报</button>
+            <button data-target="story">日程</button>
+            <button data-target="form">登记</button>
+            <button data-target="success">成功</button>
+          </nav>
+        </div>
+      </section>
+    </main>
+
+    <script src="./config.js"></script>
+    <script>
+      const scroller = document.querySelector("#h5");
+      const buttons = document.querySelectorAll("[data-target]");
+      const navButtons = document.querySelectorAll(".dock button");
+      const successScreen = document.querySelector("#success");
+      const config = window.AIFF_CONFIG || {};
+
+      function go(id) {
+        const target = document.getElementById(id);
+        scroller.scrollTo({ top: target.offsetTop, behavior: "smooth" });
+      }
+
+      function showSuccess() {
+        successScreen.classList.add("is-visible");
+        scroller.classList.add("is-locked");
+      }
+
+      function hideSuccess() {
+        successScreen.classList.remove("is-visible");
+        scroller.classList.remove("is-locked");
+      }
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          if (button.closest("#success")) {
+            hideSuccess();
+          }
+          go(button.dataset.target);
+        });
+      });
+
+      function localSubmit(data) {
+        const rows = JSON.parse(localStorage.getItem("aiff_registrations") || "[]");
+        rows.unshift({
+          _id: `local-${Date.now()}`,
+          ...data,
+          sourceEvent: "AI FASHION FIRST",
+          status: "new",
+          createdAt: new Date().toISOString(),
+        });
+        localStorage.setItem("aiff_registrations", JSON.stringify(rows));
+      }
+
+      async function submitRegistration(data) {
+        if (!config.apiBase) {
+          localSubmit(data);
+          return;
+        }
+
+        const response = await fetch(`${config.apiBase}/register`, {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(data),
+        });
+        const payload = await response.json();
+        if (!response.ok || !payload.ok) {
+          throw new Error(payload.error || "提交失败，请稍后再试");
+        }
+      }
+
+      function getRegistrationData(form) {
+        const data = Object.fromEntries(new FormData(form).entries());
+        Object.keys(data).forEach((key) => {
+          if (typeof data[key] === "string") {
+            data[key] = data[key].trim();
+          }
+        });
+        return data;
+      }
+
+      function validateRegistration(data) {
+        const requiredFields = [
+          ["name", "姓名"],
+          ["company", "公司"],
+          ["phone", "联系方式"],
+          ["attendance", "参会安排"],
+        ];
+
+        for (const [key, label] of requiredFields) {
+          if (!data[key]) {
+            throw new Error(`请填写${label}`);
+          }
+        }
+      }
+
+      const registrationForm = document.querySelector("#registrationForm");
+      registrationForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        if (!registrationForm.reportValidity()) return;
+
+        const submitButton = registrationForm.querySelector("button[type='submit']");
+        const originalText = submitButton.textContent;
+        submitButton.disabled = true;
+        submitButton.textContent = "提交中";
+
+        try {
+          const data = getRegistrationData(registrationForm);
+          validateRegistration(data);
+          await submitRegistration(data);
+          registrationForm.reset();
+          showSuccess();
+        } catch (error) {
+          alert(error.message || "提交失败，请稍后再试");
+        } finally {
+          submitButton.disabled = false;
+          submitButton.textContent = originalText;
+        }
+      });
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          const visible = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+          if (!visible) return;
+          navButtons.forEach((button) => {
+            button.classList.toggle("active", button.dataset.target === visible.target.id);
+          });
+        },
+        { root: scroller, threshold: [0.55, 0.75] }
+      );
+
+      document.querySelectorAll(".screen").forEach((screen) => observer.observe(screen));
+
+      const canvas = document.getElementById("posterCanvas");
+      const ctx = canvas.getContext("2d");
+      let width = 0;
+      let height = 0;
+      let time = 0;
+
+      function resizeCanvas() {
+        const rect = canvas.getBoundingClientRect();
+        const scale = window.devicePixelRatio || 1;
+        width = Math.max(1, Math.floor(rect.width * scale));
+        height = Math.max(1, Math.floor(rect.height * scale));
+        canvas.width = width;
+        canvas.height = height;
+        ctx.setTransform(scale, 0, 0, scale, 0, 0);
+        width = rect.width;
+        height = rect.height;
+      }
+
+      function draw() {
+        time += 0.006;
+        ctx.clearRect(0, 0, width, height);
+
+        const base = ctx.createLinearGradient(0, 0, width, height);
+        base.addColorStop(0, "#f9fbff");
+        base.addColorStop(0.45, "#e9f0f8");
+        base.addColorStop(1, "#ffffff");
+        ctx.fillStyle = base;
+        ctx.fillRect(0, 0, width, height);
+
+        for (let band = 0; band < 7; band += 1) {
+          ctx.beginPath();
+          const yBase = height * (0.18 + band * 0.095);
+          for (let x = -40; x <= width + 40; x += 12) {
+            const y =
+              yBase +
+              Math.sin(x * 0.018 + time * (1.4 + band * 0.12) + band) * (26 + band * 2) +
+              Math.sin(x * 0.041 + time * 2.2) * 10;
+            if (x === -40) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          const wave = ctx.createLinearGradient(0, yBase - 45, width, yBase + 45);
+          wave.addColorStop(0, `rgba(31,104,255,${0.035 + band * 0.003})`);
+          wave.addColorStop(0.48, `rgba(91,197,255,${0.12 - band * 0.006})`);
+          wave.addColorStop(1, "rgba(16,32,62,0.025)");
+          ctx.strokeStyle = wave;
+          ctx.lineWidth = 1.2;
+          ctx.stroke();
+        }
+
+        for (let i = 0; i < 52; i += 1) {
+          const x = (Math.sin(i * 47.2 + time * 12) * 0.5 + 0.5) * width;
+          const y = (Math.cos(i * 31.7 + time * 8) * 0.5 + 0.5) * height;
+          const r = 0.6 + (i % 4) * 0.35;
+          ctx.beginPath();
+          ctx.arc(x, y, r, 0, Math.PI * 2);
+          ctx.fillStyle = i % 5 === 0 ? "rgba(31,104,255,0.52)" : "rgba(16,32,62,0.2)";
+          ctx.fill();
+        }
+
+        for (let i = 0; i < 18; i += 1) {
+          const x1 = (Math.sin(i * 19.8 + time * 3) * 0.5 + 0.5) * width;
+          const y1 = (Math.cos(i * 13.6 + time * 2.2) * 0.5 + 0.5) * height;
+          const x2 = (Math.sin(i * 11.4 + time * 2.6 + 2) * 0.5 + 0.5) * width;
+          const y2 = (Math.cos(i * 17.3 + time * 3.3 + 1) * 0.5 + 0.5) * height;
+          ctx.beginPath();
+          ctx.moveTo(x1, y1);
+          ctx.lineTo(x2, y2);
+          ctx.strokeStyle = "rgba(31,104,255,0.08)";
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+
+        requestAnimationFrame(draw);
+      }
+
+      resizeCanvas();
+      window.addEventListener("resize", resizeCanvas);
+      draw();
+    </script>
+  </body>
+</html>
