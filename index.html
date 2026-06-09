@@ -1072,6 +1072,7 @@
     </main>
 
     <script src="./config.js"></script>
+    <script src="./cloudbase.full.js"></script>
     <script>
       const scroller = document.querySelector("#h5");
       const buttons = document.querySelectorAll("[data-target]");
@@ -1103,32 +1104,84 @@
         });
       });
 
+      let cloudBaseApp;
+
+      function buildSubmissionRow(data) {
+        return {
+          name: data.name,
+          company: data.company,
+          title: data.title || "",
+          phone: data.phone,
+          attendance: data.attendance,
+          remark: data.remark || "",
+          sourceEvent: "AI FASHION FIRST",
+          status: "new",
+          createdAt: new Date().toISOString(),
+        };
+      }
+
       function localSubmit(data) {
         const rows = JSON.parse(localStorage.getItem("aiff_registrations") || "[]");
         rows.unshift({
           _id: `local-${Date.now()}`,
-          ...data,
-          sourceEvent: "AI FASHION FIRST",
-          status: "new",
-          createdAt: new Date().toISOString(),
+          ...buildSubmissionRow(data),
         });
         localStorage.setItem("aiff_registrations", JSON.stringify(rows));
       }
 
-      async function submitRegistration(data) {
-        if (!config.apiBase) {
-          localSubmit(data);
-          return;
+      async function submitWithCloudBaseSdk(data) {
+        if (!window.cloudbase || !config.cloudbaseEnvId) {
+          throw new Error("CloudBase SDK 未加载");
         }
 
-        const response = await fetch(`${config.apiBase}/register`, {
-          method: "POST",
-          headers: { "content-type": "application/json" },
-          body: JSON.stringify(data),
-        });
-        const payload = await response.json();
-        if (!response.ok || !payload.ok) {
-          throw new Error(payload.error || "提交失败，请稍后再试");
+        if (!cloudBaseApp) {
+          cloudBaseApp = window.cloudbase.init({
+            env: config.cloudbaseEnvId,
+            region: config.cloudbaseRegion || "ap-shanghai",
+            timeout: 8000,
+          });
+        }
+
+        const auth = cloudBaseApp.auth();
+        const currentUser = await auth.getCurrentUser();
+        if (!currentUser) {
+          const login = await auth.signInAnonymously({});
+          if (login?.error) {
+            throw new Error(login.error.message || login.error.error_description || "匿名登录失败");
+          }
+        }
+
+        const db = cloudBaseApp.database();
+        await db.collection(config.cloudbaseCollection || "registrations").add(buildSubmissionRow(data));
+      }
+
+      async function submitRegistration(data) {
+        if (config.apiBase) {
+          try {
+            const controller = new AbortController();
+            const timer = setTimeout(() => controller.abort(), 6000);
+            const response = await fetch(`${config.apiBase}/register`, {
+              method: "POST",
+              headers: { "content-type": "application/json" },
+              body: JSON.stringify(data),
+              signal: controller.signal,
+            });
+            clearTimeout(timer);
+            const payload = await response.json();
+            if (!response.ok || !payload.ok) {
+              throw new Error(payload.error || "提交失败，请稍后再试");
+            }
+            return;
+          } catch (error) {
+            console.warn("HTTP registration failed, trying CloudBase Web SDK.", error);
+          }
+        }
+
+        try {
+          await submitWithCloudBaseSdk(data);
+        } catch (error) {
+          localSubmit(data);
+          throw new Error(error.message || "提交失败，请稍后再试");
         }
       }
 
