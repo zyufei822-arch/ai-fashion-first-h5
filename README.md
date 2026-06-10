@@ -1,10 +1,18 @@
 # AI FASHION FIRST H5
 
-Static GitHub Pages entry page for the AI FASHION FIRST event registration H5.
+Final GitHub Pages package for the AI FASHION FIRST event registration H5.
 
 Public links:
 
 - Registration H5: `https://zyufei822-arch.github.io/ai-fashion-first-h5/register.html?v=wechat-share-20260609`
 - Admin: `https://zyufei822-arch.github.io/ai-fashion-first-h5/manage.html`
 
-Registration submissions are sent to the existing CloudBase backend configured in `config.js`.
+Files:
+
+- `index.html` redirects to the registration page.
+- `register.html` is the public registration H5.
+- `manage.html` is the mobile admin page.
+- `config.js` stores the CloudBase API endpoint.
+- `share-card.png` is the WeChat link thumbnail.
+
+Registration submissions are sent to the CloudBase backend configured in `config.js`.
