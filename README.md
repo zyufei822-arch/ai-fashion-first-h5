@@ -4,7 +4,7 @@ Final GitHub Pages package for the AI FASHION FIRST event registration H5.
 
 Public links:
 
-- Registration H5: `https://zyufei822-arch.github.io/ai-fashion-first-h5/register.html?v=final-20260610-silk`
+- Registration H5: `https://zyufei822-arch.github.io/ai-fashion-first-h5/register.html?v=final-20260610-silk-flow`
 - Admin: `https://zyufei822-arch.github.io/ai-fashion-first-h5/manage.html`
 
 Files:

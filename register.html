@@ -192,31 +192,41 @@
 
       .poster {
         color: var(--ink);
-        background-image: var(--future-bg);
-        background-size: 100% 100%, 170% 170%, 126% auto;
-        background-position: center, 0% 0%, 50% 44%;
-        animation: silkFlow 28s ease-in-out infinite alternate;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(241, 250, 255, 0.22) 44%, rgba(255, 255, 255, 0.62)),
+          #eefaff;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         padding: 122px 24px 30px;
+        isolation: isolate;
       }
 
-      .poster canvas {
+      .poster::before {
+        content: "";
         position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0.55;
+        inset: -12%;
+        z-index: 0;
+        pointer-events: none;
+        background-image: var(--silk-bg-image);
+        background-size: cover;
+        background-position: 50% 42%;
+        opacity: 0.94;
+        transform: translate3d(-2%, -1.5%, 0) scale(1.1);
+        transform-origin: 50% 50%;
+        animation: silkImageFlow 18s ease-in-out infinite alternate;
+        will-change: transform, filter;
       }
 
       .poster::after {
         content: "";
         position: absolute;
         inset: 0;
+        z-index: 1;
+        pointer-events: none;
         background:
-          linear-gradient(116deg, transparent 0 24%, rgba(255, 255, 255, 0.42) 38%, rgba(91, 197, 255, 0.08) 47%, transparent 66%),
-          repeating-linear-gradient(108deg, rgba(31, 104, 255, 0.03) 0 1px, transparent 1px 30px),
+          radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.58), transparent 34%),
+          linear-gradient(116deg, transparent 0 22%, rgba(255, 255, 255, 0.45) 38%, rgba(91, 197, 255, 0.08) 48%, transparent 68%),
           linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.02) 48%, rgba(255, 255, 255, 0.58));
         animation: silkSheen 18s ease-in-out infinite alternate;
       }
@@ -369,6 +379,21 @@
         }
         100% {
           background-position: center, 100% 82%, 47% 57%;
+        }
+      }
+
+      @keyframes silkImageFlow {
+        0% {
+          filter: saturate(1.02) brightness(1.01);
+          transform: translate3d(-4%, -2.5%, 0) scale(1.12) rotate(-0.4deg);
+        }
+        46% {
+          filter: saturate(1.08) brightness(1.035);
+          transform: translate3d(2.5%, 1%, 0) scale(1.16) rotate(0.35deg);
+        }
+        100% {
+          filter: saturate(1.03) brightness(1.02);
+          transform: translate3d(-1%, 3.5%, 0) scale(1.13) rotate(-0.15deg);
         }
       }
 
@@ -935,7 +960,6 @@
         <div class="phone-screen">
           <div class="h5" id="h5">
             <section class="screen poster" id="poster">
-              <canvas id="posterCanvas" aria-hidden="true"></canvas>
               <div class="poster-content">
                 <div class="poster-tag">FASHION × AI SUMMIT</div>
                 <div class="poster-title">
@@ -1229,85 +1253,6 @@
       );
 
       document.querySelectorAll(".screen").forEach((screen) => observer.observe(screen));
-
-      const canvas = document.getElementById("posterCanvas");
-      const ctx = canvas.getContext("2d");
-      let width = 0;
-      let height = 0;
-      let time = 0;
-
-      function resizeCanvas() {
-        const rect = canvas.getBoundingClientRect();
-        const scale = window.devicePixelRatio || 1;
-        width = Math.max(1, Math.floor(rect.width * scale));
-        height = Math.max(1, Math.floor(rect.height * scale));
-        canvas.width = width;
-        canvas.height = height;
-        ctx.setTransform(scale, 0, 0, scale, 0, 0);
-        width = rect.width;
-        height = rect.height;
-      }
-
-      function draw() {
-        time += 0.006;
-        ctx.clearRect(0, 0, width, height);
-
-        const base = ctx.createLinearGradient(0, 0, width, height);
-        base.addColorStop(0, "#f9fbff");
-        base.addColorStop(0.45, "#e9f0f8");
-        base.addColorStop(1, "#ffffff");
-        ctx.fillStyle = base;
-        ctx.fillRect(0, 0, width, height);
-
-        for (let band = 0; band < 7; band += 1) {
-          ctx.beginPath();
-          const yBase = height * (0.18 + band * 0.095);
-          for (let x = -40; x <= width + 40; x += 12) {
-            const y =
-              yBase +
-              Math.sin(x * 0.018 + time * (1.4 + band * 0.12) + band) * (26 + band * 2) +
-              Math.sin(x * 0.041 + time * 2.2) * 10;
-            if (x === -40) ctx.moveTo(x, y);
-            else ctx.lineTo(x, y);
-          }
-          const wave = ctx.createLinearGradient(0, yBase - 45, width, yBase + 45);
-          wave.addColorStop(0, `rgba(31,104,255,${0.035 + band * 0.003})`);
-          wave.addColorStop(0.48, `rgba(91,197,255,${0.12 - band * 0.006})`);
-          wave.addColorStop(1, "rgba(16,32,62,0.025)");
-          ctx.strokeStyle = wave;
-          ctx.lineWidth = 1.2;
-          ctx.stroke();
-        }
-
-        for (let i = 0; i < 52; i += 1) {
-          const x = (Math.sin(i * 47.2 + time * 12) * 0.5 + 0.5) * width;
-          const y = (Math.cos(i * 31.7 + time * 8) * 0.5 + 0.5) * height;
-          const r = 0.6 + (i % 4) * 0.35;
-          ctx.beginPath();
-          ctx.arc(x, y, r, 0, Math.PI * 2);
-          ctx.fillStyle = i % 5 === 0 ? "rgba(31,104,255,0.52)" : "rgba(16,32,62,0.2)";
-          ctx.fill();
-        }
-
-        for (let i = 0; i < 18; i += 1) {
-          const x1 = (Math.sin(i * 19.8 + time * 3) * 0.5 + 0.5) * width;
-          const y1 = (Math.cos(i * 13.6 + time * 2.2) * 0.5 + 0.5) * height;
-          const x2 = (Math.sin(i * 11.4 + time * 2.6 + 2) * 0.5 + 0.5) * width;
-          const y2 = (Math.cos(i * 17.3 + time * 3.3 + 1) * 0.5 + 0.5) * height;
-          ctx.beginPath();
-          ctx.moveTo(x1, y1);
-          ctx.lineTo(x2, y2);
-          ctx.strokeStyle = "rgba(31,104,255,0.08)";
-          ctx.lineWidth = 1;
-          ctx.stroke();
-        }
-
-        requestAnimationFrame(draw);
-      }
-
-      resizeCanvas();
-      window.addEventListener("resize", resizeCanvas);
-      draw();
     </script>
   </body>
 </html>
