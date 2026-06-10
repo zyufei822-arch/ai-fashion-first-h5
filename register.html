@@ -27,10 +27,11 @@
         --cyan: #5bc5ff;
         --silver: #f3f5f8;
         --panel: rgba(255, 255, 255, 0.88);
+        --silk-bg-image: url("./silk-bg.jpg");
         --future-bg:
-          linear-gradient(124deg, rgba(255, 255, 255, 0.96) 0%, rgba(235, 247, 255, 0.94) 38%, rgba(247, 249, 255, 0.98) 72%, #ffffff 100%),
-          linear-gradient(28deg, rgba(31, 104, 255, 0.11), transparent 42%),
-          linear-gradient(154deg, transparent 0%, rgba(91, 197, 255, 0.16) 48%, transparent 82%);
+          linear-gradient(180deg, rgba(255, 255, 255, 0.58), rgba(245, 251, 255, 0.34) 42%, rgba(255, 255, 255, 0.72)),
+          linear-gradient(118deg, rgba(255, 255, 255, 0.38), rgba(91, 197, 255, 0.08) 40%, rgba(31, 104, 255, 0.05) 74%, rgba(255, 255, 255, 0.42)),
+          var(--silk-bg-image);
       }
 
       * {
@@ -54,8 +55,10 @@
         font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
         color: var(--ink);
         background:
-          radial-gradient(circle at 22% 18%, rgba(91, 197, 255, 0.16), transparent 28%),
-          linear-gradient(132deg, #f7f8fb 0%, #ebeef4 44%, #fdfdfd 100%);
+          linear-gradient(135deg, rgba(248, 252, 255, 0.8), rgba(238, 247, 253, 0.84)),
+          var(--silk-bg-image);
+        background-size: 100% 100%, cover;
+        background-position: center;
       }
 
       body {
@@ -189,7 +192,10 @@
 
       .poster {
         color: var(--ink);
-        background: var(--future-bg);
+        background-image: var(--future-bg);
+        background-size: 100% 100%, 170% 170%, 126% auto;
+        background-position: center, 0% 0%, 50% 44%;
+        animation: silkFlow 28s ease-in-out infinite alternate;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -209,9 +215,10 @@
         position: absolute;
         inset: 0;
         background:
-          linear-gradient(116deg, transparent 0 24%, rgba(255, 255, 255, 0.56) 38%, rgba(91, 197, 255, 0.1) 47%, transparent 66%),
-          repeating-linear-gradient(108deg, rgba(31, 104, 255, 0.045) 0 1px, transparent 1px 28px),
-          linear-gradient(180deg, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.08) 48%, rgba(255, 255, 255, 0.72));
+          linear-gradient(116deg, transparent 0 24%, rgba(255, 255, 255, 0.42) 38%, rgba(91, 197, 255, 0.08) 47%, transparent 66%),
+          repeating-linear-gradient(108deg, rgba(31, 104, 255, 0.03) 0 1px, transparent 1px 30px),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.02) 48%, rgba(255, 255, 255, 0.58));
+        animation: silkSheen 18s ease-in-out infinite alternate;
       }
 
       .poster-content,
@@ -353,9 +360,35 @@
         }
       }
 
+      @keyframes silkFlow {
+        0% {
+          background-position: center, 0% 0%, 50% 43%;
+        }
+        48% {
+          background-position: center, 64% 42%, 54% 50%;
+        }
+        100% {
+          background-position: center, 100% 82%, 47% 57%;
+        }
+      }
+
+      @keyframes silkSheen {
+        0% {
+          opacity: 0.72;
+          transform: translate3d(-1.5%, -1%, 0) scale(1.02);
+        }
+        100% {
+          opacity: 0.9;
+          transform: translate3d(1.5%, 1%, 0) scale(1.04);
+        }
+      }
+
       .story-screen,
       .form-screen {
-        background: var(--future-bg);
+        background-image: var(--future-bg);
+        background-size: 100% 100%, 170% 170%, 128% auto;
+        background-position: center, 0% 0%, 50% 44%;
+        animation: silkFlow 30s ease-in-out infinite alternate;
         padding: 46px 22px 28px;
       }
 
@@ -368,10 +401,11 @@
         z-index: 0;
         pointer-events: none;
         background:
-          linear-gradient(112deg, transparent 0 20%, rgba(255, 255, 255, 0.68) 36%, rgba(91, 197, 255, 0.12) 44%, transparent 62%),
-          repeating-linear-gradient(104deg, rgba(31, 104, 255, 0.042) 0 1px, transparent 1px 32px),
-          repeating-linear-gradient(18deg, rgba(17, 19, 24, 0.028) 0 1px, transparent 1px 48px);
-        opacity: 0.78;
+          linear-gradient(112deg, transparent 0 20%, rgba(255, 255, 255, 0.5) 36%, rgba(91, 197, 255, 0.1) 44%, transparent 62%),
+          repeating-linear-gradient(104deg, rgba(31, 104, 255, 0.026) 0 1px, transparent 1px 34px),
+          repeating-linear-gradient(18deg, rgba(17, 19, 24, 0.018) 0 1px, transparent 1px 52px);
+        opacity: 0.7;
+        animation: silkSheen 20s ease-in-out infinite alternate;
       }
 
       .story-screen > *,
@@ -631,7 +665,10 @@
         display: none;
         align-items: center;
         justify-items: center;
-        background: var(--future-bg);
+        background-image: var(--future-bg);
+        background-size: 100% 100%, 170% 170%, 128% auto;
+        background-position: center, 0% 0%, 50% 44%;
+        animation: silkFlow 30s ease-in-out infinite alternate;
       }
 
       .success.is-visible {

@@ -14,5 +14,6 @@ Files:
 - `manage.html` is the mobile admin page.
 - `config.js` stores the CloudBase API endpoint.
 - `share-card.png` is the WeChat link thumbnail.
+- `silk-bg.jpg` is the animated silk background asset used by the H5.
 
 Registration submissions are sent to the CloudBase backend configured in `config.js`.
