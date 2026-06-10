@@ -26,7 +26,7 @@
         --blue: #1f68ff;
         --cyan: #5bc5ff;
         --silver: #f3f5f8;
-        --panel: rgba(255, 255, 255, 0.88);
+        --panel: rgba(255, 255, 255, 0.9);
         --silk-bg-image: url("./silk-bg.jpg");
         --future-bg:
           linear-gradient(180deg, rgba(255, 255, 255, 0.58), rgba(245, 251, 255, 0.34) 42%, rgba(255, 255, 255, 0.72)),
@@ -55,10 +55,10 @@
         font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
         color: var(--ink);
         background:
-          linear-gradient(135deg, rgba(248, 252, 255, 0.8), rgba(238, 247, 253, 0.84)),
+          linear-gradient(135deg, rgba(252, 254, 255, 0.92), rgba(243, 251, 255, 0.9)),
           var(--silk-bg-image);
         background-size: 100% 100%, cover;
-        background-position: center;
+        background-position: center, 20% center;
       }
 
       body {
@@ -166,8 +166,32 @@
         height: 100%;
         border-radius: 42px;
         overflow: hidden;
-        background: #fbfcfe;
+        background: #f8fdff;
         position: relative;
+        isolation: isolate;
+      }
+
+      .silk-wave-bg {
+        position: absolute;
+        inset: -7%;
+        z-index: 0;
+        width: 114%;
+        height: 114%;
+        pointer-events: none;
+        opacity: 0.96;
+        filter: brightness(1.03) saturate(1.05);
+      }
+
+      .phone-screen::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        background:
+          radial-gradient(circle at 5% 68%, rgba(255, 210, 229, 0.24), transparent 30%),
+          radial-gradient(circle at 14% 17%, rgba(255, 255, 255, 0.32), transparent 26%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02) 46%, rgba(255, 255, 255, 0.12));
       }
 
       .h5 {
@@ -176,6 +200,9 @@
         scroll-snap-type: y mandatory;
         scroll-behavior: smooth;
         scrollbar-width: none;
+        position: relative;
+        z-index: 2;
+        background: transparent;
       }
 
       .h5::-webkit-scrollbar {
@@ -188,13 +215,12 @@
         scroll-snap-align: start;
         position: relative;
         overflow: hidden;
+        background: transparent;
       }
 
       .poster {
         color: var(--ink);
-        background:
-          linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(241, 250, 255, 0.22) 44%, rgba(255, 255, 255, 0.62)),
-          #eefaff;
+        background: transparent;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -203,32 +229,11 @@
       }
 
       .poster::before {
-        content: "";
-        position: absolute;
-        inset: -12%;
-        z-index: 0;
-        pointer-events: none;
-        background-image: var(--silk-bg-image);
-        background-size: cover;
-        background-position: 50% 42%;
-        opacity: 0.94;
-        transform: translate3d(-2%, -1.5%, 0) scale(1.1);
-        transform-origin: 50% 50%;
-        animation: silkImageFlow 18s ease-in-out infinite alternate;
-        will-change: transform, filter;
+        content: none;
       }
 
       .poster::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: 1;
-        pointer-events: none;
-        background:
-          radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.58), transparent 34%),
-          linear-gradient(116deg, transparent 0 22%, rgba(255, 255, 255, 0.45) 38%, rgba(91, 197, 255, 0.08) 48%, transparent 68%),
-          linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.02) 48%, rgba(255, 255, 255, 0.58));
-        animation: silkSheen 18s ease-in-out infinite alternate;
+        content: none;
       }
 
       .poster-content,
@@ -410,27 +415,15 @@
 
       .story-screen,
       .form-screen {
-        background-image: var(--future-bg);
-        background-size: 100% 100%, 170% 170%, 128% auto;
-        background-position: center, 0% 0%, 50% 44%;
-        animation: silkFlow 30s ease-in-out infinite alternate;
+        background: transparent;
+        animation: none;
         padding: 46px 22px 28px;
       }
 
       .story-screen::before,
       .form-screen::before,
       .success::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: 0;
-        pointer-events: none;
-        background:
-          linear-gradient(112deg, transparent 0 20%, rgba(255, 255, 255, 0.5) 36%, rgba(91, 197, 255, 0.1) 44%, transparent 62%),
-          repeating-linear-gradient(104deg, rgba(31, 104, 255, 0.026) 0 1px, transparent 1px 34px),
-          repeating-linear-gradient(18deg, rgba(17, 19, 24, 0.018) 0 1px, transparent 1px 52px);
-        opacity: 0.7;
-        animation: silkSheen 20s ease-in-out infinite alternate;
+        content: none;
       }
 
       .story-screen > *,
@@ -690,10 +683,8 @@
         display: none;
         align-items: center;
         justify-items: center;
-        background-image: var(--future-bg);
-        background-size: 100% 100%, 170% 170%, 128% auto;
-        background-position: center, 0% 0%, 50% 44%;
-        animation: silkFlow 30s ease-in-out infinite alternate;
+        background: transparent;
+        animation: none;
       }
 
       .success.is-visible {
@@ -958,6 +949,7 @@
 
       <section class="phone-shell" aria-label="Phone preview">
         <div class="phone-screen">
+          <canvas class="silk-wave-bg" id="silkWaveCanvas" aria-hidden="true"></canvas>
           <div class="h5" id="h5">
             <section class="screen poster" id="poster">
               <div class="poster-content">
@@ -1253,6 +1245,146 @@
       );
 
       document.querySelectorAll(".screen").forEach((screen) => observer.observe(screen));
+
+      function initSilkWaveBackground() {
+        const canvas = document.querySelector("#silkWaveCanvas");
+        const host = document.querySelector(".phone-screen");
+        if (!canvas || !host) return;
+
+        const ctx = canvas.getContext("2d");
+        const image = new Image();
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        let width = 0;
+        let height = 0;
+        let dpr = 1;
+        let frameId = 0;
+
+        function resizeSilkCanvas() {
+          const rect = canvas.getBoundingClientRect();
+          dpr = Math.min(window.devicePixelRatio || 1, 2);
+          width = Math.max(1, rect.width);
+          height = Math.max(1, rect.height);
+          canvas.width = Math.round(width * dpr);
+          canvas.height = Math.round(height * dpr);
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+
+        function getCoverSource() {
+          const imageRatio = image.naturalWidth / image.naturalHeight;
+          const canvasRatio = width / height;
+          let sourceWidth = image.naturalWidth;
+          let sourceHeight = image.naturalHeight;
+
+          if (imageRatio > canvasRatio) {
+            sourceWidth = sourceHeight * canvasRatio;
+          } else {
+            sourceHeight = sourceWidth / canvasRatio;
+          }
+
+          const maxX = image.naturalWidth - sourceWidth;
+          const maxY = image.naturalHeight - sourceHeight;
+          return {
+            sx: Math.max(0, maxX * 0.1),
+            sy: Math.max(0, maxY * 0.48),
+            sw: sourceWidth,
+            sh: sourceHeight,
+          };
+        }
+
+        function drawGlowCurve(progress) {
+          ctx.save();
+          ctx.globalCompositeOperation = "screen";
+          ctx.lineCap = "round";
+          ctx.lineJoin = "round";
+          ctx.shadowBlur = 16;
+          ctx.shadowColor = "rgba(255, 205, 232, 0.28)";
+          ctx.strokeStyle = "rgba(255, 255, 255, 0.18)";
+          ctx.lineWidth = 12;
+          ctx.beginPath();
+          ctx.moveTo(-width * 0.12, height * 0.68);
+          ctx.bezierCurveTo(width * 0.18, height * (0.56 + Math.sin(progress) * 0.015), width * 0.34, height * 0.7, width * 0.58, height * 0.54);
+          ctx.bezierCurveTo(width * 0.82, height * 0.39, width * 0.84, height * 0.7, width * 1.14, height * 0.52);
+          ctx.stroke();
+
+          ctx.shadowBlur = 12;
+          ctx.shadowColor = "rgba(110, 196, 255, 0.2)";
+          ctx.strokeStyle = "rgba(170, 226, 255, 0.1)";
+          ctx.lineWidth = 8;
+          ctx.beginPath();
+          ctx.moveTo(width * 0.03, height * 0.26);
+          ctx.bezierCurveTo(width * 0.28, height * 0.14, width * 0.45, height * 0.36, width * 0.66, height * 0.22);
+          ctx.bezierCurveTo(width * 0.84, height * 0.1, width * 0.95, height * 0.28, width * 1.1, height * 0.22);
+          ctx.stroke();
+          ctx.restore();
+        }
+
+        function drawSilk(now = 0) {
+          if (!image.naturalWidth || !width || !height) return;
+
+          const t = now * 0.00042;
+          const source = getCoverSource();
+          const strips = 120;
+          const stripHeight = height / strips;
+
+          ctx.clearRect(0, 0, width, height);
+          ctx.fillStyle = "#f8fdff";
+          ctx.fillRect(0, 0, width, height);
+
+          ctx.save();
+          ctx.filter = "brightness(1.07) saturate(1.08) contrast(0.99)";
+          for (let i = 0; i < strips; i += 1) {
+            const y = i * stripHeight;
+            const ratio = i / strips;
+            const softEdge = Math.sin(Math.PI * ratio);
+            const offset =
+              (Math.sin(ratio * Math.PI * 2.2 - t * 2.1) * 15 +
+                Math.sin(ratio * Math.PI * 4.2 + t * 1.25) * 6) *
+              (0.35 + softEdge * 0.65);
+            const sourceY = source.sy + ratio * source.sh;
+            const sourceH = source.sh / strips + 2;
+            ctx.drawImage(image, source.sx, sourceY, source.sw, sourceH, offset - 26, y, width + 52, stripHeight + 1.5);
+          }
+          ctx.restore();
+
+          const pink = ctx.createRadialGradient(width * 0.05, height * 0.72, 0, width * 0.05, height * 0.72, width * 0.62);
+          pink.addColorStop(0, "rgba(255, 202, 224, 0.24)");
+          pink.addColorStop(0.44, "rgba(255, 226, 238, 0.1)");
+          pink.addColorStop(1, "rgba(255, 255, 255, 0)");
+          ctx.globalCompositeOperation = "screen";
+          ctx.fillStyle = pink;
+          ctx.fillRect(0, 0, width, height);
+
+          const veil = ctx.createLinearGradient(0, 0, width, height);
+          veil.addColorStop(0, "rgba(255, 255, 255, 0.08)");
+          veil.addColorStop(0.5, "rgba(255, 255, 255, 0.015)");
+          veil.addColorStop(1, "rgba(255, 255, 255, 0.08)");
+          ctx.fillStyle = veil;
+          ctx.fillRect(0, 0, width, height);
+
+          drawGlowCurve(t);
+          ctx.globalCompositeOperation = "source-over";
+
+          if (!reduceMotion) {
+            frameId = requestAnimationFrame(drawSilk);
+          }
+        }
+
+        image.onload = () => {
+          resizeSilkCanvas();
+          drawSilk();
+          if (!reduceMotion) {
+            cancelAnimationFrame(frameId);
+            frameId = requestAnimationFrame(drawSilk);
+          }
+        };
+        image.src = "./silk-bg.jpg";
+        window.addEventListener("resize", () => {
+          resizeSilkCanvas();
+          drawSilk();
+        });
+      }
+
+      initSilkWaveBackground();
     </script>
   </body>
 </html>
