@@ -104,6 +104,10 @@
         gap: 10px;
       }
 
+      .actions.three {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
       .stats {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -170,6 +174,31 @@
         text-align: center;
       }
 
+      .notice {
+        margin-bottom: 14px;
+        padding: 11px 14px;
+        border: 1px solid rgba(37, 102, 242, 0.18);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.66);
+        color: #435062;
+        font-size: 12px;
+        line-height: 1.6;
+      }
+
+      .notice.is-hot {
+        color: #1748b8;
+        background: rgba(224, 238, 255, 0.72);
+        border-color: rgba(37, 102, 242, 0.32);
+      }
+
+      .subtle {
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.5;
+        text-align: center;
+      }
+
       [hidden] {
         display: none !important;
       }
@@ -194,12 +223,18 @@
 
         <div class="toolbar">
           <input id="searchInput" placeholder="搜索姓名 / 公司 / 手机号" />
-          <div class="actions">
+          <div class="actions three">
+            <button id="refreshButton" type="button">刷新</button>
+            <button id="notifyButton" type="button">开启提醒</button>
             <button id="exportButton" type="button">导出 CSV</button>
+          </div>
+          <div class="actions">
             <button id="copyButton" type="button">复制给 Codex</button>
+            <a class="link-button" href="./register.html" target="_blank" rel="noopener">打开报名页</a>
           </div>
         </div>
 
+        <div class="notice" id="notice">登录后将每 20 秒自动刷新。开启提醒后，后台页面保持打开时有新报名会提示。</div>
         <div class="records" id="records"></div>
         <div class="empty" id="empty" hidden>还没有报名记录。</div>
       </section>
@@ -212,6 +247,11 @@
         password: sessionStorage.getItem("aiff_admin_password") || "",
         rows: [],
         filtered: [],
+        seenKeys: new Set(),
+        hasLoadedOnce: false,
+        notifyEnabled: localStorage.getItem("aiff_admin_notify") === "1",
+        pollTimer: null,
+        audioContext: null,
       };
 
       const loginPanel = document.querySelector("#loginPanel");
@@ -224,11 +264,59 @@
       const empty = document.querySelector("#empty");
       const totalCount = document.querySelector("#totalCount");
       const todayCount = document.querySelector("#todayCount");
+      const notice = document.querySelector("#notice");
+      const refreshButton = document.querySelector("#refreshButton");
+      const notifyButton = document.querySelector("#notifyButton");
 
       passwordInput.value = state.password;
 
       function todayKey() {
         return new Date().toISOString().slice(0, 10);
+      }
+
+      function rowKey(row) {
+        return String(row._id || row.id || `${row.createdAt || ""}|${row.phone || ""}|${row.name || ""}`);
+      }
+
+      function setNotice(message, hot = false) {
+        notice.textContent = message;
+        notice.classList.toggle("is-hot", hot);
+      }
+
+      function updateNotifyButton() {
+        notifyButton.textContent = state.notifyEnabled ? "提醒已开" : "开启提醒";
+      }
+
+      function playBeep() {
+        try {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (!AudioContext) return;
+          state.audioContext = state.audioContext || new AudioContext();
+          const ctx = state.audioContext;
+          if (ctx.state === "suspended") ctx.resume();
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = "sine";
+          osc.frequency.value = 880;
+          gain.gain.setValueAtTime(0.0001, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.12, ctx.currentTime + 0.02);
+          gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.35);
+          osc.connect(gain).connect(ctx.destination);
+          osc.start();
+          osc.stop(ctx.currentTime + 0.38);
+        } catch {}
+      }
+
+      function pushNotification(rows) {
+        if (!state.notifyEnabled || rows.length === 0) return;
+        playBeep();
+        if ("Notification" in window && Notification.permission === "granted") {
+          const first = rows[0];
+          new Notification(`AI FASHION FIRST 新报名 ${rows.length} 人`, {
+            body: `${first.name || "未填姓名"} · ${first.company || "未填公司"} · ${first.phone || ""}`,
+            tag: "aiff-new-registration",
+          });
+        }
       }
 
       function localRows() {
@@ -238,6 +326,16 @@
       function csvCell(value) {
         const text = String(value ?? "").trim();
         return /[",\n\r]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
+      }
+
+      function escapeHtml(value) {
+        return String(value ?? "").replace(/[&<>"']/g, (char) => ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;",
+        }[char]));
       }
 
       function localCsv(rows) {
@@ -307,39 +405,83 @@
           node.className = "record";
           node.innerHTML = `
             <div class="record-head">
-              <strong>${row.name || ""}</strong>
-              <span>${String(row.createdAt || "").slice(0, 16).replace("T", " ")}</span>
+              <strong>${escapeHtml(row.name)}</strong>
+              <span>${escapeHtml(String(row.createdAt || "").slice(0, 16).replace("T", " "))}</span>
             </div>
-            <p>${row.company || ""} · ${row.title || "职务未填"}</p>
-            <p>${row.phone || ""} · ${row.attendance || ""}</p>
-            ${row.remark ? `<p>${row.remark}</p>` : ""}
+            <p>${escapeHtml(row.company)} · ${escapeHtml(row.title || "职务未填")}</p>
+            <p>${escapeHtml(row.phone)} · ${escapeHtml(row.attendance)}</p>
+            ${row.remark ? `<p>${escapeHtml(row.remark)}</p>` : ""}
           `;
           records.appendChild(node);
         });
       }
 
-      async function loadRows() {
-        loginStatus.textContent = "读取中...";
+      async function loadRows({ silent = false } = {}) {
+        if (!silent) loginStatus.textContent = "读取中...";
         const payload = await api("/admin/list");
-        state.rows = payload.data || [];
+        const rows = payload.data || [];
+        const previousKeys = state.seenKeys;
+        const incoming = rows.filter((row) => !previousKeys.has(rowKey(row)));
+        state.rows = rows;
+        state.seenKeys = new Set(rows.map(rowKey));
         state.filtered = [...state.rows];
         sessionStorage.setItem("aiff_admin_password", state.password);
         loginPanel.hidden = true;
         adminPanel.hidden = false;
         loginStatus.textContent = "";
         render();
+        if (state.hasLoadedOnce && incoming.length > 0) {
+          setNotice(`收到 ${incoming.length} 条新报名，列表已自动更新。`, true);
+          pushNotification(incoming);
+        } else if (!silent) {
+          setNotice(`已连接后台。当前共 ${state.rows.length} 条报名数据，CSV 可随时导出。`);
+        } else {
+          const time = new Date().toLocaleTimeString("zh-CN", { hour12: false });
+          setNotice(`后台已自动刷新：${time}。当前共 ${state.rows.length} 条报名数据。`);
+        }
+        state.hasLoadedOnce = true;
+      }
+
+      function startPolling() {
+        clearInterval(state.pollTimer);
+        state.pollTimer = setInterval(() => {
+          if (document.hidden) return;
+          loadRows({ silent: true }).catch((error) => {
+            setNotice(error.message || "自动刷新失败，请检查网络。", true);
+          });
+        }, 20000);
       }
 
       loginButton.addEventListener("click", async () => {
         state.password = passwordInput.value.trim();
         try {
           await loadRows();
+          startPolling();
         } catch (error) {
           loginStatus.textContent = error.message || "登录失败";
         }
       });
 
       searchInput.addEventListener("input", applyFilter);
+
+      refreshButton.addEventListener("click", () => {
+        loadRows({ silent: true }).catch((error) => {
+          setNotice(error.message || "刷新失败，请检查网络。", true);
+        });
+      });
+
+      notifyButton.addEventListener("click", async () => {
+        state.notifyEnabled = true;
+        localStorage.setItem("aiff_admin_notify", "1");
+        if ("Notification" in window && Notification.permission === "default") {
+          try {
+            await Notification.requestPermission();
+          } catch {}
+        }
+        playBeep();
+        updateNotifyButton();
+        setNotice("提醒已开启。请保持后台页面打开，有新报名会自动提示。");
+      });
 
       document.querySelector("#exportButton").addEventListener("click", async () => {
         const csv = config.apiBase ? await api("/admin/export") : localCsv(state.rows);
@@ -359,8 +501,9 @@
       });
 
       if (state.password) {
-        loadRows().catch(() => {});
+        loadRows().then(startPolling).catch(() => {});
       }
+      updateNotifyButton();
     </script>
   </body>
 </html>

@@ -4,7 +4,7 @@ Final GitHub Pages package for the AI FASHION FIRST event registration H5.
 
 Public links:
 
-- Registration H5: `https://zyufei822-arch.github.io/ai-fashion-first-h5/register.html?v=final-20260610-s-wave`
+- Registration H5: `https://zyufei822-arch.github.io/ai-fashion-first-h5/register.html?v=final-20260611`
 - Admin: `https://zyufei822-arch.github.io/ai-fashion-first-h5/manage.html`
 
 Files:
@@ -13,7 +13,7 @@ Files:
 - `register.html` is the public registration H5.
 - `manage.html` is the mobile admin page.
 - `config.js` stores the CloudBase API endpoint.
-- `share-card.png` is the WeChat link thumbnail.
-- `silk-bg.jpg` is the animated silk background asset used by the H5.
+- `share-card.jpg` is the WeChat link thumbnail.
+- `qr-github.png` is the public registration QR code.
 
 Registration submissions are sent to the CloudBase backend configured in `config.js`.
