@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>AI Champion营深度训练营报名 | AI FASHION FIRST</title>
+    <meta name="description" content="AI FASHION FIRST — AI Champion营深度训练营报名。2026年6月30日—7月1日，杭州市 · 和盛大厦。" />
+    <meta property="og:site_name" content="AI FASHION FIRST" />
+    <meta property="og:title" content="AI Champion营深度训练营报名" />
+    <meta property="og:description" content="面向企业内部AI推进者的深度训练营报名入口。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://zyufei822-arch.github.io/ai-fashion-first-h5/champion.html" />
+    <meta property="og:image" content="https://zyufei822-arch.github.io/ai-fashion-first-h5/share-card.jpg" />
+    <meta property="og:image:width" content="600" />
+    <meta property="og:image:height" content="600" />
+    <style>
+      :root {
+        --bg: #04070c;
+        --panel: rgba(10, 18, 30, 0.72);
+        --ice: #eaf6ff;
+        --glow: #9fd4ff;
+        --steel: rgba(214, 234, 250, 0.66);
+        --faint: rgba(200, 228, 250, 0.45);
+        --hairline: rgba(159, 212, 255, 0.24);
+        --danger: #ff9a9a;
+        --ok: #9fe8c8;
+        --cn: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+        --en: "Arial", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+        background: var(--bg);
+      }
+
+      body {
+        color: var(--ice);
+        font-family: var(--cn);
+        -webkit-font-smoothing: antialiased;
+        background:
+          radial-gradient(circle at 18% 6%, rgba(159, 212, 255, 0.2), transparent 26%),
+          radial-gradient(circle at 88% 16%, rgba(145, 210, 255, 0.12), transparent 28%),
+          linear-gradient(180deg, #050912 0%, #07101a 52%, #04070c 100%);
+      }
+
+      .page {
+        width: min(520px, 100%);
+        min-height: 100vh;
+        margin: 0 auto;
+        padding: 30px 24px calc(44px + env(safe-area-inset-bottom));
+      }
+
+      .top-link {
+        display: inline-flex;
+        min-height: 34px;
+        align-items: center;
+        padding: 0 14px;
+        border: 1px solid rgba(190, 225, 250, 0.28);
+        border-radius: 999px;
+        color: var(--steel);
+        text-decoration: none;
+        font-size: 12px;
+        background: rgba(159, 212, 255, 0.06);
+      }
+
+      .hero {
+        padding: 46px 0 30px;
+      }
+
+      .kicker {
+        margin: 0 0 14px;
+        color: var(--glow);
+        font: 700 12px/1 var(--en);
+        letter-spacing: 0.34em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(34px, 9vw, 44px);
+        line-height: 1.08;
+        letter-spacing: 0.02em;
+        font-weight: 900;
+      }
+
+      .lead {
+        margin: 18px 0 0;
+        color: var(--steel);
+        font-size: 15px;
+        line-height: 1.9;
+      }
+
+      .meta-panel,
+      .form-card,
+      .success-card {
+        border: 1px solid var(--hairline);
+        border-radius: 8px;
+        background: linear-gradient(180deg, rgba(14, 24, 38, 0.72), rgba(8, 14, 23, 0.78));
+        box-shadow: 0 0 38px rgba(90, 160, 215, 0.12);
+      }
+
+      .meta-panel {
+        display: grid;
+        gap: 14px;
+        padding: 18px;
+        margin-bottom: 18px;
+      }
+
+      .meta-row {
+        display: grid;
+        grid-template-columns: 70px 1fr;
+        gap: 12px;
+        font-size: 13px;
+        line-height: 1.75;
+      }
+
+      .meta-row span {
+        color: var(--faint);
+      }
+
+      .meta-row strong {
+        font-weight: 700;
+      }
+
+      .form-card {
+        display: grid;
+        gap: 16px;
+        padding: 18px;
+      }
+
+      .field label {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--steel);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+      }
+
+      .field em {
+        color: var(--glow);
+        font-style: normal;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        appearance: none;
+        -webkit-appearance: none;
+        border: 1px solid var(--hairline);
+        border-radius: 6px;
+        background: rgba(7, 13, 22, 0.78);
+        color: var(--ice);
+        padding: 14px;
+        font: 400 15px/1.4 var(--cn);
+        outline: none;
+      }
+
+      select {
+        background-image:
+          linear-gradient(45deg, transparent 50%, var(--steel) 50%),
+          linear-gradient(135deg, var(--steel) 50%, transparent 50%);
+        background-position: calc(100% - 19px) 50%, calc(100% - 14px) 50%;
+        background-size: 5px 5px;
+        background-repeat: no-repeat;
+      }
+
+      select:invalid {
+        color: rgba(214, 234, 250, 0.45);
+      }
+
+      textarea {
+        min-height: 108px;
+        resize: vertical;
+      }
+
+      input::placeholder,
+      textarea::placeholder {
+        color: rgba(214, 234, 250, 0.36);
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        border-color: rgba(159, 212, 255, 0.7);
+        box-shadow: 0 0 0 3px rgba(110, 175, 230, 0.16);
+      }
+
+      .cta {
+        display: flex;
+        min-height: 54px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(190, 225, 250, 0.4);
+        border-radius: 999px;
+        color: #03121f;
+        background: linear-gradient(180deg, #f2faff 0%, #b5dcf8 70%, #8cc4ec 100%);
+        box-shadow: 0 0 26px rgba(140, 200, 245, 0.32);
+        font: 800 16px/1 var(--cn);
+        letter-spacing: 0.18em;
+        text-indent: 0.18em;
+      }
+
+      .cta[disabled] {
+        opacity: 0.66;
+      }
+
+      .status {
+        min-height: 18px;
+        margin: 0;
+        color: var(--steel);
+        font-size: 12.5px;
+        line-height: 1.6;
+      }
+
+      .status.is-error {
+        color: var(--danger);
+      }
+
+      .status.is-success {
+        color: var(--ok);
+      }
+
+      .privacy {
+        margin: 12px 0 0;
+        color: var(--faint);
+        font-size: 11px;
+        line-height: 1.8;
+      }
+
+      .success-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 20;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 28px;
+        background: rgba(3, 6, 10, 0.82);
+        backdrop-filter: blur(10px);
+      }
+
+      .success-overlay.is-visible {
+        display: flex;
+      }
+
+      .success-card {
+        width: 100%;
+        max-width: 380px;
+        padding: 34px 24px 24px;
+        text-align: center;
+      }
+
+      .success-card h2 {
+        margin: 0;
+        font-size: 24px;
+      }
+
+      .success-card p {
+        margin: 14px 0 22px;
+        color: var(--steel);
+        font-size: 13px;
+        line-height: 1.9;
+      }
+
+      .success-card a {
+        color: var(--glow);
+        text-decoration: none;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <a class="top-link" href="./register.html?v=final-20260612-champion1">返回峰会主页</a>
+
+      <section class="hero">
+        <p class="kicker">AI Champion Camp</p>
+        <h1>AI Champion营<br />深度训练营报名</h1>
+        <p class="lead">
+          面向企业内部AI推进者，用真实业务场景训练方法、拆解流程、设计工作流，并形成可推进的行动计划。
+        </p>
+      </section>
+
+      <section class="meta-panel" aria-label="训练营信息">
+        <div class="meta-row"><span>时间</span><strong>2026年6月30日—7月1日</strong></div>
+        <div class="meta-row"><span>地点</span><strong>杭州市 · 和盛大厦</strong></div>
+        <div class="meta-row"><span>说明</span><strong>训练营需单独报名，名额将根据报名信息确认。</strong></div>
+      </section>
+
+      <form class="form-card" id="championForm">
+        <div class="field">
+          <label for="f-name">姓名 <em>*</em></label>
+          <input id="f-name" name="name" required autocomplete="name" placeholder="请填写姓名" />
+        </div>
+
+        <div class="field">
+          <label for="f-phone">手机号 / 微信 <em>*</em></label>
+          <input id="f-phone" name="phone" required inputmode="tel" autocomplete="tel" placeholder="请填写联系方式" />
+        </div>
+
+        <div class="field">
+          <label for="f-company">公司 / 单位 <em>*</em></label>
+          <input id="f-company" name="company" required autocomplete="organization" placeholder="请填写公司名称" />
+        </div>
+
+        <div class="field">
+          <label for="f-title">职位</label>
+          <select id="f-title" name="title">
+            <option value="" selected>请选择职位（选填）</option>
+            <option>创始人 / 企业负责人</option>
+            <option>设计师 / 创意负责人</option>
+            <option>市场部 / 品牌公关</option>
+            <option>数字化 / AI负责人</option>
+            <option>运营 / 供应链负责人</option>
+            <option>其他</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="f-stage">企业AI阶段 <em>*</em></label>
+          <select id="f-stage" name="trainingStage" required>
+            <option value="" selected disabled>请选择当前阶段</option>
+            <option>刚开始了解AI</option>
+            <option>已在部门内试用AI工具</option>
+            <option>正在推进企业内部AI项目</option>
+            <option>已有明确业务场景，需要设计工作流</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="f-focus">参训重点 <em>*</em></label>
+          <select id="f-focus" name="trainingFocus" required>
+            <option value="" selected disabled>请选择重点方向</option>
+            <option>设计研发 / 商品企划</option>
+            <option>品牌内容 / 市场增长</option>
+            <option>运营管理 / 供应链效率</option>
+            <option>企业AI组织推进 / 工作流搭建</option>
+            <option>其他</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="f-challenge">希望带来的真实工作场景 <em>*</em></label>
+          <textarea id="f-challenge" name="businessChallenge" required placeholder="例如：新品企划、内容生产、门店运营、供应链预测、内部知识库、设计提效等"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="f-remark">备注</label>
+          <textarea id="f-remark" name="remark" placeholder="可填写特殊需求或补充信息"></textarea>
+        </div>
+
+        <p class="status" id="formStatus" role="status" aria-live="polite"></p>
+        <button class="cta" type="submit">提交训练营报名</button>
+        <p class="privacy">您提交的信息仅用于本次活动及 AI Champion营的报名确认、现场签到与活动联系。</p>
+      </form>
+    </main>
+
+    <div class="success-overlay" id="successOverlay" role="dialog" aria-modal="true" aria-labelledby="successTitle">
+      <div class="success-card">
+        <h2 id="successTitle">报名已提交</h2>
+        <p>感谢您报名 AI Champion营深度训练营。我们期待与您一起把 AI 带入真实业务场景。</p>
+        <a href="./register.html?v=final-20260612-champion1">返回峰会主页</a>
+      </div>
+    </div>
+
+    <script src="./config.js?v=20260610-final"></script>
+    <script>
+      (function () {
+        const config = window.AIFF_CONFIG || {};
+        const form = document.getElementById("championForm");
+        const status = document.getElementById("formStatus");
+        const overlay = document.getElementById("successOverlay");
+
+        function setStatus(message, type) {
+          status.textContent = message || "";
+          status.classList.toggle("is-error", type === "error");
+          status.classList.toggle("is-success", type === "success");
+        }
+
+        function getData() {
+          const data = Object.fromEntries(new FormData(form).entries());
+          Object.keys(data).forEach((key) => {
+            if (typeof data[key] === "string") data[key] = data[key].trim();
+          });
+          return data;
+        }
+
+        function buildPayload(data) {
+          const remarkParts = [
+            "报名来源：AI Champion营二级报名页",
+            `企业AI阶段：${data.trainingStage}`,
+            `参训重点：${data.trainingFocus}`,
+            `真实工作场景：${data.businessChallenge}`,
+            data.remark ? `备注：${data.remark}` : "",
+          ].filter(Boolean);
+
+          return {
+            name: data.name,
+            phone: data.phone,
+            company: data.company,
+            title: data.title || "未填写",
+            identity: "AI Champion营报名",
+            attendance: "AI Champion营深度训练营",
+            remark: remarkParts.join("\n"),
+            createdAt: new Date().toISOString(),
+          };
+        }
+
+        window.__buildChampionPayload = buildPayload;
+
+        async function submitRegistration(payload) {
+          if (!config.apiBase) {
+            const local = JSON.parse(localStorage.getItem("aiff_registrations") || "[]");
+            local.unshift({ ...payload, sourceEvent: "AI FASHION FIRST", status: "new" });
+            localStorage.setItem("aiff_registrations", JSON.stringify(local));
+            return;
+          }
+
+          const controller = new AbortController();
+          const timer = setTimeout(() => controller.abort(), 8000);
+          try {
+            const response = await fetch(`${config.apiBase}/register`, {
+              method: "POST",
+              headers: { "content-type": "application/json" },
+              body: JSON.stringify(payload),
+              signal: controller.signal,
+            });
+            const result = await response.json();
+            if (!response.ok || !result.ok) throw new Error(result.error || "提交失败，请稍后再试");
+          } catch (error) {
+            throw new Error(error.name === "AbortError" ? "提交超时，请检查网络后重试" : error.message || "提交失败，请稍后再试");
+          } finally {
+            clearTimeout(timer);
+          }
+        }
+
+        form.addEventListener("submit", async (event) => {
+          event.preventDefault();
+          setStatus("");
+          if (!form.reportValidity()) {
+            setStatus("请先补全必填信息。", "error");
+            return;
+          }
+
+          const button = form.querySelector("button[type='submit']");
+          const originalText = button.textContent;
+          button.disabled = true;
+          button.textContent = "提交中…";
+          setStatus("正在提交训练营报名信息，请稍候。");
+
+          try {
+            const payload = buildPayload(getData());
+            await submitRegistration(payload);
+            form.reset();
+            setStatus("报名信息已提交。", "success");
+            overlay.classList.add("is-visible");
+            document.body.style.overflow = "hidden";
+          } catch (error) {
+            setStatus(error.message || "提交失败，请稍后再试。", "error");
+          } finally {
+            button.disabled = false;
+            button.textContent = originalText;
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
