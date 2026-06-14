@@ -4,8 +4,8 @@ Final GitHub Pages package for the AI FASHION FIRST event registration H5.
 
 Public links:
 
-- Registration H5: `https://zyufei822-arch.github.io/ai-fashion-first-h5/register.html?v=final-20260612-champion1`
-- AI Champion camp H5: `https://zyufei822-arch.github.io/ai-fashion-first-h5/champion.html?v=final-20260612-champion1`
+- Registration H5: `https://zyufei822-arch.github.io/ai-fashion-first-h5/register.html?v=final-20260614-training1`
+- AI Champion camp H5: `https://zyufei822-arch.github.io/ai-fashion-first-h5/champion.html?v=final-20260614-training1`
 - Admin: `https://zyufei822-arch.github.io/ai-fashion-first-h5/manage.html`
 
 Files:
