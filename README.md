@@ -4,19 +4,23 @@ Final GitHub Pages package for the AI FASHION FIRST event registration H5.
 
 Public links:
 
-- Registration H5: `https://zyufei822-arch.github.io/ai-fashion-first-h5/register.html?v=final-20260614-training1`
-- AI Champion camp H5: `https://zyufei822-arch.github.io/ai-fashion-first-h5/champion.html?v=final-20260614-training1`
+- Registration H5: `https://zyufei822-arch.github.io/ai-fashion-first-h5/register.html?v=final-20260614-training3`
+- AI Champion camp H5 (previous version): `https://zyufei822-arch.github.io/ai-fashion-first-h5/champion.html?v=final-20260612-champion1`
+- AI Champion training signup H5: `https://zyufei822-arch.github.io/ai-fashion-first-h5/champion-training.html?v=final-20260614-training3`
 - Admin: `https://zyufei822-arch.github.io/ai-fashion-first-h5/manage.html`
 
 Files:
 
 - `index.html` redirects to the registration page.
 - `register.html` is the public registration H5.
-- `champion.html` is the AI Champion camp secondary registration H5.
+- `champion.html` keeps the previous AI Champion camp secondary registration H5.
+- `champion-training.html` is the standalone AI Champion training signup H5.
+- `backups/champion-training-20260614-training3.html` is a standalone backup of the training signup H5.
 - `manage.html` is the mobile admin page.
 - `config.js` stores the CloudBase API endpoint.
 - `share-card.jpg` is the WeChat link thumbnail.
 - `qr-github.png` is the public registration QR code.
-- `champion-qr.png` is the AI Champion camp registration QR code.
+- `champion-qr.png` is the previous AI Champion camp registration QR code.
+- `champion-training-qr.png` is the standalone AI Champion training signup QR code.
 
 Registration submissions are sent to the CloudBase backend configured in `config.js`.
