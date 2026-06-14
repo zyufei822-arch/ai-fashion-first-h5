@@ -18,7 +18,8 @@ Files:
 - `backups/champion-training-20260614-training3.html` is a standalone backup of the training signup H5.
 - `manage.html` is the mobile admin page.
 - `config.js` stores the CloudBase API endpoint.
-- `share-card.jpg` is the WeChat link thumbnail.
+- `share-card.jpg` is the public registration WeChat link thumbnail.
+- `champion-training-share-card-v1.png` is the AI Champion training WeChat link thumbnail.
 - `qr-github.png` is the public registration QR code.
 - `champion-qr.png` is the previous AI Champion camp registration QR code.
 - `champion-training-qr.png` is the standalone AI Champion training signup QR code.
