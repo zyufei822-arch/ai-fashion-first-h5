@@ -20,8 +20,7 @@ Files:
 - `config.js` stores the CloudBase API endpoint.
 - `share-card.jpg` is the public registration WeChat link thumbnail.
 - `champion-training-share-card-v1.png` is the AI Champion training WeChat link thumbnail.
-- `qr-github.png` is the public registration QR code.
-- `champion-qr.png` is the previous AI Champion camp registration QR code.
-- `champion-training-qr.png` is the standalone AI Champion training signup QR code.
+- `qr-register-20260615-clean1.png` is the public registration QR code.
+- `qr-champion-training-20260615-clean1.png` is the standalone AI Champion training signup QR code.
 
 Registration submissions are sent to the CloudBase backend configured in `config.js`.
